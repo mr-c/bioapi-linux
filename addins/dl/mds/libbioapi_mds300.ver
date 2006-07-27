@@ -1,0 +1,14 @@
+#
+#	version script file for libmds.so
+#   created by: rsnelick@nist.gov
+#               for bioapi port on linux by NIST
+#
+libbioapi_mds300.so {
+	global:
+		MDS_Initialize;
+		MDS_Terminate;
+		MDS_Install;
+		MDS_Uninstall;
+	local:
+		*;
+};

@@ -1,0 +1,13 @@
+#
+#	version script file for libpwbsp.so
+
+libqtpwbsp.so{
+global:
+    BioSPI_ModuleLoad;
+    BioSPI_ModuleUnload;
+    BioSPI_ModuleAttach;
+    BioSPI_ModuleDetach;
+    RegisterBioAPIModule;
+local:
+    *;
+};

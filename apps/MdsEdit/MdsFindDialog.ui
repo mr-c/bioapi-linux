@@ -1,0 +1,197 @@
+<!DOCTYPE UI><UI version="3.0" stdsetdef="1">
+<class>MdsFindDialog</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>MdsFindDialog</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>500</width>
+            <height>148</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Find</string>
+    </property>
+    <property name="icon">
+        <pixmap>searchfind</pixmap>
+    </property>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>m_cancelButton</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>380</x>
+                <y>50</y>
+                <width>108</width>
+                <height>26</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Cancel</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>m_okButton</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>380</x>
+                <y>10</y>
+                <width>108</width>
+                <height>26</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Find</string>
+        </property>
+        <property name="default">
+            <bool>true</bool>
+        </property>
+    </widget>
+    <widget class="QGroupBox">
+        <property name="name">
+            <cstring>m_scopeFlags</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>40</y>
+                <width>350</width>
+                <height>50</height>
+            </rect>
+        </property>
+        <property name="title">
+            <string>Examine:</string>
+        </property>
+        <widget class="QCheckBox">
+            <property name="name">
+                <cstring>m_useAttrName</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>20</y>
+                    <width>150</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>Attribute Name</string>
+            </property>
+        </widget>
+        <widget class="QCheckBox">
+            <property name="name">
+                <cstring>m_useAttrValue</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>180</x>
+                    <y>20</y>
+                    <width>140</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>Attribute Value</string>
+            </property>
+        </widget>
+    </widget>
+    <widget class="QCheckBox">
+        <property name="name">
+            <cstring>m_matchCase</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>20</x>
+                <y>120</y>
+                <width>210</width>
+                <height>20</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Match case</string>
+        </property>
+    </widget>
+    <widget class="QLineEdit">
+        <property name="name">
+            <cstring>m_searchString</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>70</x>
+                <y>10</y>
+                <width>290</width>
+                <height>22</height>
+            </rect>
+        </property>
+    </widget>
+    <widget class="QLabel">
+        <property name="name">
+            <cstring>TextLabel1</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>10</y>
+                <width>50</width>
+                <height>20</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>String:</string>
+        </property>
+    </widget>
+    <widget class="QCheckBox">
+        <property name="name">
+            <cstring>m_matchWholeString</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>20</x>
+                <y>100</y>
+                <width>210</width>
+                <height>20</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Match whole string only</string>
+        </property>
+    </widget>
+</widget>
+<connections>
+    <connection>
+        <sender>m_okButton</sender>
+        <signal>clicked()</signal>
+        <receiver>MdsFindDialog</receiver>
+        <slot>accept()</slot>
+    </connection>
+    <connection>
+        <sender>m_cancelButton</sender>
+        <signal>clicked()</signal>
+        <receiver>MdsFindDialog</receiver>
+        <slot>reject()</slot>
+    </connection>
+    <connection>
+        <sender>m_searchString</sender>
+        <signal>returnPressed()</signal>
+        <receiver>MdsFindDialog</receiver>
+        <slot>accept()</slot>
+    </connection>
+</connections>
+<tabstops>
+    <tabstop>m_searchString</tabstop>
+    <tabstop>m_useAttrName</tabstop>
+    <tabstop>m_useAttrValue</tabstop>
+    <tabstop>m_matchWholeString</tabstop>
+    <tabstop>m_matchCase</tabstop>
+    <tabstop>m_okButton</tabstop>
+    <tabstop>m_cancelButton</tabstop>
+</tabstops>
+<pixmapinproject/>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

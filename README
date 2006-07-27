@@ -1,0 +1,538 @@
+/*---------------------------------------------------------------------------*/
+ *
+ * NIST Linux/Unix BioAPI Reference Implementation
+ * Version: 1.1 (NIST Linux/Unix Evaluation Release)
+ *
+ * File Created: 08/27/02 File Updated: 11/07/02
+ * This README describes the implementation and installation details for the
+ * BioAPI Reference Implementation for Unix/Linux based systems.
+ *
+/*---------------------------------------------------------------------------*/
+
+===============================================================================
+=   Contents:                                                                 =
+===============================================================================
+1.  Overview
+2.  Contact
+3.  System Requirements
+4.  Distribution
+5.  Build Instructions
+6.  Installation Instructions
+7.  Sample/Test App Instructions
+8.  Uninstalling and Package Removal
+9.  Distribution Summary
+10. Disclaimer
+11. Credits
+12. Quick-Start Guide
+===============================================================================
+
+1. Overview
+-----------
+This package contains the BioAPI reference implementation for Unix-based
+platforms (in particular Linux and Solaris). The Unix-based reference 
+implementation was developed by the Convergent Information Division (CISD), 
+Information Technology Laboratory (ITL) of the National Institute of Standards 
+and Technology (NIST). The Unix-based reference implementation is based 
+directly on the BioAPI Consortium's Windows reference implementation and the 
+Common Data Security Architecture (CDSA) reference implementation. The 
+Unix-based reference implementation includes the Sample application and the 
+MdsEdit utility from code provided by the International Biometric Group 
+(IBG). Although this distribution has only been tested on Linux and Solaris, it
+is anticipated that porting it to other Unix-based platforms should be fairly
+straight-forward.   
+
+See the HTML files in this distribution for details of the BioAPI reference
+implementation.
+
+2. Contact
+----------
+Robert Snelick
+National Institute of Standards and Technology (NIST)
+(301) 975-5924
+rsnelick@nist.gov
+
+3. System Requirements
+----------------------
+
+   This release of the BioAPI has been built with the following software for 
+   an x86 platform (little-endian):
+
+   Red Hat Linux Version 7.3 2.96-112, Kernal 2.4.18-10
+   gcc Version 2.96 
+   GNU Make Version 3.79.1
+   Qt GUI Toolkit Version 3.0.3
+
+   The release has been tested on the following systems:
+   * Red Hat Linux Version 7.3 2.96-112, Kernal 2.4.18-10
+   * Red Hat Linux Version 7.2 2.96-108.7.2, Kernal 2.4.9-34
+
+AND
+
+   This release of the BioAPI has been built with the following software for 
+   the sparc platform (big-endian):
+
+   Solaris 8 (SunOS 5.8) Generic_108528-15 sparc SUNW,Ultra-60
+   Qt GUI Toolkit Version 3.0.3
+
+   Note: You must have QT version 3.0 or higher for the GUI related code.
+   It is included with Red Hat Versions 7.3 and higher. The lastest version
+   of QT can be downloaded at http://www.trolltech.com. QT does not come with
+   Solaris distributions. 
+
+   Note: If you wish to install the implementation without any GUI based
+   code, see sections 5.4 for more information.
+
+   Note to Solaris Users
+   ---------------------
+   The makefile system as distributed here assumes that the Qt libraries 
+   were compiled using the native Sun C/C++ compiler.  This is why all code 
+   which relies on Qt is compiled with the Sun C/C++ compiler, and not GCC/G++ 
+   like the rest of the code (Because there are known problems linking 
+   GCC/G++and Sun C/C++ compiled code). If your local SunOS systems has an 
+   installation of Qt that was compiled with GCC/G++ instead, you will need 
+   to adjust some of our makefiles to use GCC/G++ instead. Here are the
+   locations of the makefiles: apps/CMDS, apps/MdsEdit, apps/QSample, and
+   addins/qtpwbsp. 
+   
+4. Distribution
+---------------
+
+   The distribution comes as a compressed tar file (bioapi_unix_1.1.tar.gz). 
+   The follows commands can be used to extract the source code distribution.
+
+   A. Un-compress the distribution "gz" file (bioapi_unix_1.1.tar.gz) by 
+      typing at the command line:
+
+   % gunzip bioapi_unix_1.1.tar.gz
+
+   B. Un-archive the distribution "tar" file (bioapi_unix_1.1.tar) by typing
+      at the command line:
+
+   % tar -xvf bioapi_unix_1.1.tar
+
+   This creates a subdirectory called 'bioapi' in the current directory that
+   contains all the files in the distribution. The full path of the 'bioapi' 
+   directory is referred to as 'BIOAPI_PATH' in this document.
+
+   Follow the detailed instructions below for installation or jump to the 
+   Quick-Start Guide in section 12.
+
+5. Build Instructions
+---------------------
+
+   The BioAPI reference implementation installs as two main components: 
+   binaries and data files.  The binaries consist of dynamic shared libraries 
+   and executable programs.  The data files consist of the Module Directory
+   Service (MDS) database and registry.  By default, both the binaries and 
+   the data files are installed into system directories (/usr/local and 
+   /var respectively).  However, a configuration script has been provided 
+   which allows these locations to be altered.
+ 
+   Note that installing this software using the default locations will 
+   require that the installation be performed by someone with root 
+   priviledges. Also, once installed into the default system directories, 
+   only users with root priviledges will be able to run the software.
+
+   Below we describe the steps for configuring and building this package.
+
+   5.1 Set environment variable QTDIR to point to the installtion directory
+       where Qt version 3.0 or higher is installed, and cd (change dir)
+       to the top-level BIOAPI_PATH directory.  For example,
+
+       % cd BIOAPI_PATH
+       % setenv QTDIR /usr/lib/qt3
+
+       Note: QT is a GUI Toolkit that is used in the Sample application and
+       the Mds Edit uitility.
+
+       Note: Some Linux (e.g., Red Hat) distributions come with QT pre-install
+       and set this variable automatically. If you don't have QT install on
+       your system you can download the lastest version at 
+       http://www.trolltech.com. 
+
+   5.2 Configure the software 
+
+      Configuration involves choosing which directories the software will use 
+      for installation and operation.  Choosing a suitable configuration will 
+      depend upon the local environment and needs of the users.  
+
+      A configuration script has been provided which must be used to configure 
+      the software.  The script has two main command-line options for choosing 
+      the installation/operation directories.  They are:
+
+      --prefix=[BINARY_INSTALL_PATH]  Sets path for the shared libs, includes 
+                                      and executables:
+                                      (Default: /usr/local)
+
+      BINARY_INSTALL_PATH/bioapi   - includes (.h files) and executables 
+                                     (test/example apps)
+      BINARY_INSTALL_PATH/lib      - shared libraries (.so files)
+  
+
+      --with-mds=[MDS_INSTALL_PATH]   Sets path for the MDS database and 
+                                      registry files:
+                                      (Default: /var)
+
+      MDS_INSTALL_PATH/bioapi_mds  - contains MDS database & registry base dir
+
+      [**Note, hereafter BINARY_INSTALL_PATH and MDS_INSTALL_PATH will be used 
+      to refer to the actual directories that were configured]
+
+
+      There are several alternatives possible for configuring the software as 
+      outlined below:
+
+
+      First Configuration Alternative
+      -------------------------------
+
+      In the first alternative, the software may be configured to accept the 
+      default installation paths, which are in system directories.  (The 
+      defaults are BINARY_INSTALL_PATH=/usr/local and MDS_INSTALL_PATH=/var)  
+      In this scenario only the system administrator (root) will be able to 
+      install the software and run the example/test programs which come with 
+      the package. 
+
+      % ./configure
+
+      NOTE: The default location for the libraries is /usr/local/lib. This
+      directory may not be in the search path of the runtime link loader. 
+      Therefore, before execution of the applications, the 
+      LD_LIBRARY_PATH should be set to include /usr/local/lib or 
+      /etc/ld.so.conf should include /usr/local/lib.
+
+      If you want the *standard* library path, that is, /usr/lib you can set
+      this with:
+
+      % ./configure --prefix=/usr
+
+      This will place the libraries in /usr/lib and the MDS data path in
+      /var/bioapi_mds. With this the runtime linker will discover the libraries
+      automatically.
+
+      Second Configuration Alternative
+      --------------------------------
+
+      In the second alternative, the software can be configured to install 
+      itself into non-system directories.  This option enables the software 
+      to be installed and run by ordinary (non-priveldged) users.  (Note 
+      however that using this configuration only the user who installs the 
+      software will have access to it)
+
+      % ./configure --prefix=/home/rob/local --with-mds=/home/rob/local
+
+      Note: --prefix=/home/rob/local sets "LIB_INSTPATH"
+      Note: Since (as in this example) you have chosen to install the shared 
+      libraries (i.e., the .so files) to a *non-standard* location that is 
+      not automatically searched by the runtime link loader you'll need to set 
+      your LD_LIBRARY_PATH environment variable to include "LIB_INSTPATH" 
+      prior to running any of the executables.
+
+      For csh type shells do:
+        % setenv LD_LIBRARY_PATH LIB_INSTPATH
+        or
+        % setenv LD_LIBRARY_PATH "${LD_LIBRARY_PATH}:LIB_INSTPATH"
+  
+        For example:
+        % setenv LD_LIBRARY_PATH /home/rob/local/lib
+
+      For sh type shells do:
+
+        % export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:LIB_INSTPATH"
+
+   5.3 Build the BioAPI Libraries and Executables
+
+       % make
+
+   This command will build and create all the libraries and executables for
+   the BioAPI software development kit. The files are placed into the
+   ./build/devkit directory. There are five sub-directories under devkit
+   (bin, include, install, lib, and testbin).
+
+   After sucessful compilation the contents of these directories for this 
+   distribution should look like:
+
+   bin:
+   MdsEdit
+   QSample
+  
+   include:
+   bioapi_api.h
+   bioapi_err.h
+   bioapi.h
+   bioapi_schema.h
+   bioapi_spi.h
+   bioapi_typecast.h
+   bioapi_type.h
+   bioapi_util.h
+   bioapi_uuid.h
+   biospi.h
+   biospi_type.h
+   bio.tmp
+   bsp_schema.h
+   device_schema.h
+   installdefs.h
+   mds.h
+   port/bioapi_lock.h
+   port/bioapi_port.h
+  
+   install:
+   install.sh
+   mds_install
+   mod_install
+   uninstall.sh
+
+   lib:
+   libbioapi100.so
+   libbioapi_dummy100.so
+   libbioapi_mds300.so
+   libbioapi_util.a
+   libCMDS.a
+   libinstall.a
+   libmds_util.a
+   libmds_util_api.a
+   libport.a
+   libpwbsp.so
+
+   testbin:
+   BioAPITest
+
+   5.4 Non-GUI Installation Option
+
+   If you want to build the system with out the GUI based code add the
+   --without-gui flag to the configuration. This option can be added with any
+   of the configuration options described above. The result of this flag is
+   that the GUI Password BSP, MdsEdit, and  Sample application will not be 
+   built. Instead a non-GUI version of the Password BSP and Sample application
+   are built. This is a quick and easy way to test the implementation without
+   relying on the QT GUI Toolkit.
+
+   % ./configure --without-gui
+
+6. Installation Instructions
+----------------------------
+
+   Depending upon the configuration options chosen in step 5.2, root 
+   priviledges may be required to install the software.  In any case simply 
+   type:
+
+   % make install
+
+   If you do not have the correct priviledges to install the software for the
+   configuration chosen in step 5.2, you will get an error message to the 
+   effect:
+   "Under the present configuration only root can install bioapi".  In that 
+   case simpy re-login as root (su root) and run "make install" again.
+
+   Otherwise, the software installs all of the files in ./build/devkit" to
+   BINARY_INSTALL_PATH/bioapi and the shared libraries from ./build/devkit/lib
+   into BINARY_INSTALL_PATH/lib.  It also installs the Module Directory 
+   Service (MDS), the BioAPI framework, and the sample Biometric Service 
+   Providers (BSPs) to MDS_INSTALL_PATH/bioapi_mds.
+
+   If installation succeeds, you will see a series of messages similar to the 
+   following:
+
+     mkdir /usr/local/bioapi
+     installing bioapi files to /usr/local/bioapi
+     cp -fR /home/rob/bioapi/build/devkit/* /usr/local/bioapi
+     cd /usr/local/bioapi/install; ./install.sh all
+
+     Installing BIOAPI ...
+   
+     Module Directory Services (MDS) ...
+     MDS installed successfully.
+     BioAPI Framework ...
+     Module installed successfully.
+     BioAPI Dummy Addin ...
+     Module installed successfully.
+     BioAPI Password BSP Module ...
+     Module installed successfully.
+     Done.
+
+     Installing Test Modules ...
+
+     No test modules to install ... OK
+
+     Done.
+
+
+7. Sample/Test App Instructions
+--------------------------------
+
+   The BioAPI reference implementation comes with a simple test program called
+   BioAPITest and a sample GUI-based application called QSample.
+
+    ** Note: System administrator (root) priviledges (i.e., write permission
+       to the installation files) may be required to run these programs 
+       depending up how the software was configured and where the MDS DB and 
+       registry was installed.  See section 5 and 6 above for configuration 
+       and installation instructions.
+
+   To run the test program type: 
+
+   % cd BINARY_INSTALL_PATH/bioapi/testbin
+   % ./BioAPITest
+
+   The output from the test program should be self-explanatory. This is a
+   simple Non-GUI test application that simply interacts with the BioAPI and
+   prints out information about the loaded BSPs.
+
+   To run the sample application type:
+
+   % cd BINARY_INSTALL_PATH/bioapi/bin
+   % ./QSample
+
+   A window will appear with a menu to select a biometric technology. Select
+   the Password BSP. Then type in a user name and select the Enroll button.
+   Type a password on the edit box. Then select the Verify button. Type in 
+   a password. If the password matches the enrolled password for the user, 
+   an information dialog will appear indicating a match.  Otherwise, the 
+   information dialog will indicate a non-match. 
+
+   The template Dummy BSP have stub APIs and will report an error for any 
+   operation attempted.  The Password BSP will enroll and verify a user. 
+
+   Note there is a Sample Application and Password BSP that is not GUI-Based.
+   The use of this version is simular, but is a one time pass-through and is 
+   by default set to the Password BSP.
+
+   To run the MDS Edit Utility type:
+
+   % cd BINARY_INSTALL_PATH/bioapi/bin
+   % ./MdsEdit
+
+   A window will appear that has a tree structure that allows you to browse
+   the software modules that have been installed.
+
+8. Uninstalling and Package Removal
+-----------------------------------
+
+   Below is a list of commands the can be used to uninstall the BioAPI
+   reference implementation.
+
+   A. % make clean
+   
+   Removes all the files (objects, libraries, executables) created in the
+   build process. This command can be executed at any level in the directory
+   hirearchy (it will clean from that point down).
+
+   B. % make distclean
+
+   Same as "make clean", but also removes the build/devkit/(bin, include, 
+   install, lib, and test) directories and the configure files (e.g., the
+   makefiles). This command only applies to the top level BIOAPI_PATH 
+   directory.  WARNING: make "distclean" will remove the makefiles and 
+   hence the capibilites for "make install/uninstall" and "make remove".
+
+   C. % make uninstall
+
+   This uninstalls the framework, MDS, and BSPs. You may need 'root' priviledge
+   to run this command depending up on the software was installed (see 
+   sections 5 and 6 above). You must run this before running the "make remove" 
+   command. This command only applies to the top level BIOAPI_PATH directory. 
+
+   D. % make remove
+
+   This removes the software development kit. This command only applies to the 
+   top level BIOAPI_PATH directory. 
+
+   E. The sequence (in this order) to completely remove the distribution is:
+
+      % make uninstall
+      % make remove
+      % make distclean
+ 
+   Again, these commands must be executed relative to the BIOAPI_PATH 
+   directory and may require root priveledge for the "make uninstall" 
+   and "make remove". 
+
+9. Distribution Summary
+-----------------------
+
+   Below is a list of targets and the location of where they are built 
+   relative to the BIOAPI_PATH directory:
+
+   Target                    Type              Location
+   ----                      ----              --------
+   BioAPITest                Application       apps/Test
+   QSample                   Application       apps/Sample
+   Sample                    Application       apps/NonGUI_Sample
+   MdsEdit*                  Application       apps/MdsEdit
+   libCMDS.a*                Library           apps/Cmds
+   libport.a#                Library           framework/port
+   libbioapi_util.a          Library           framework/bioapi_util
+   libmds_util.a             Library           framework/mds_util
+   libmds_util_api.a         Library           framework/mds_util_api
+   libinstall.a              Library           framework/h_layer/install
+   libbioapi100.so           Shared Library    framework/h_layer
+   libbioapi_mds300.so       Shared Library    addins/dl/mds
+   libbioapi_dummy100.so     Shared Library    addins/bioapi_dummy_addin
+   libpwbsp.so               Shared Library    addins/pwbsp
+   libpwbsp.so               Shared Library    addins/qtpwbsp (GUI-version)
+   mds_install               Utility           addins/dl/mds/mds_install
+   mod_install               Utility           apps/mod_install
+
+   * Integrated from the International Biometric Group (IBG) code. 
+   # Port library taken from CDSA. Included in the NIST Linux/Unix version 
+     as source code so that the location of the registery could be dynamic.
+
+   [Note: The locations of BINARY_INSTALL_PATH and MDS_INSTALL_PATH
+   are set by the configure script (see section 5 above for details)]
+
+   Location of BioAPI software development kit files
+   -------------------------------------------------
+   BINARY_INSTALL_PATH/bioapi/bin
+   BINARY_INSTALL_PATH/bioapi/include
+   BINARY_INSTALL_PATH/bioapi/install
+   BINARY_INSTALL_PATH/bioapi/lib
+   BINARY_INSTALL_PATH/bioapi/testbin
+
+   Location of Shared Libraries
+   ----------------------------
+   BINARY_INSTALL_PATH/lib
+
+   Location of MDS Database and Registry
+   -------------------------------------
+   MDS Database: MDS_INSTALL_PATH/bioapi_mds/BioAPIFFDB
+   Registry    : MDS_INSTALL_PATH/bioapi_mds/registry
+
+10. Disclaimer
+--------------
+
+   See the disclaimer notice in this directory.
+
+11. Credits
+-----------
+
+   Windows Implementation: See the contributers file in this directory. 
+   NIST BioAPI Implementation Linux port: Robert Snelick, NIST
+   Configuration system: Mike Indovina, NIST
+   MDS Editor Utility for Unix: International Biometric Group (IBG)
+
+12. Quick-Start Guide
+---------------------
+
+    If root:
+
+    % cd BIOAPI_PATH
+    % ./configure --prefix=/usr
+    % make
+    % make install
+    % /usr/bioapi/testbin/BioAPITest
+    % /usr/bioapi/bin/QSample
+    % /usr/bioapi/bin/MdsEdit
+
+    If not root and install in /home/rob/local:
+
+    % cd BIOAPI_PATH
+    % ./configure --prefix=/home/rob/local --with-mds=/home/rob/local
+    % setenv LD_LIBRARY_PATH /home/rob/local/lib
+    % make
+    % make install
+    % /home/rob/local/bioapi/testbin/BioAPITest
+    % /home/rob/local/bioapi/bin/QSample
+    % /home/rob/local/bioapi/bin/MdsEdit
+
+    For a non-GUI version, replace the configure statement with:
+    % ./configure --prefix=/home/rob/local --with-mds=/home/rob/local --without-gui

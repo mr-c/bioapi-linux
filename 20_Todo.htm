@@ -1,0 +1,110 @@
+<html>
+<head>
+<title>BioAPI Reference Implementation: To Do</title>
+</head>
+
+<body>
+
+<h1>BioAPI Reference Implementation: To Do</h1>
+
+You may have thought the reference implementation was complete, but
+there are a number of things that still need to be done.  Most of these
+don't impact on the functionality of the code, but are more in the vein
+of "cleaning up", so that, in addition to having a binary we can be
+proud of, we get to a collection of source code that we can be equally
+proud of.
+
+<ol>
+
+<li><b>"Insert" callback</b>
+
+<p>This first item is part interpretation issue, part philosophical
+decision, and probably parts of other things that we haven't yet
+realized.  In the third paragraph of the definition of the
+BioAPI_ModuleLoad function, it is stated that "When a BSP is loaded, it
+should raise an 'insert' event immediately if there is a sensor already
+attached."  In the case of many biometrics which can't (for a variety of
+reasons) detect insertion of the sensor, "immediately" is interpreted in
+such a way that the insert callback is called before the
+BioAPI_ModuleLoad function has returned.
+
+<p>The most obvious way to interpret the insert callback is for the
+application to assume that it can call BioAPI_ModuleAttach immediately
+on receipt of the callback.  However, this has the result that
+BioAPI_ModuleAttach is effectively called from within BioAPI_ModuleLoad,
+because both the framework and the (sample) application are
+single-threaded.  This call to BioAPI_ModuleAttach will fail, because
+the framework has certain critical internal data structures locked
+already.
+
+<p>One solution to this would be to require that the application include
+some technique to queue these callback events and only call them when it
+knows it is safe.  This seems, to some, to be a large onus to put on
+many applications, and application developers.  This onus could be eased
+somewhat with some additions to the BioAPI utility library.  A simple
+version of this (perhaps not suitable for industrial strength applications,
+and certainly not usable by any application which simultaneously loads
+more than one module in different threads) has been implemented in the
+provided sample app; see the code that deals with g_immediate_attach in main.c.
+
+<p>Another solution would be to make the framework more intelligent about
+when it is safe to issue callbacks.  This would certainly require that
+the framework become multi-threaded, but even then is a very tricky
+issue, because the same instance of the framework may be called from
+multiple threads within a process, or even from multiple processes.
+
+<p>This issue remains open pending further mailing list discussion to
+determine the best solution.
+
+<p><li><b>Enhanced sample app</b>
+
+<p>The sample app is quite simple, making use of very few API calls.  It
+should be enhanced to become a general-purpose testing tool, with
+options for enabling and disabling various optional functionality, in
+order to enable testers to give the framework a good workout.
+
+<p><li><b>Application controlled GUI and client/server BSPs</b>
+
+<p>No BSPs have yet been written which support these concepts, nor are
+there applications which can make use of them.  Therefore, these parts
+of the framework have not yet been tested.  These options need to be
+implemented by someone so that the framework can be tested.  Ideally,
+these would be fed back into the password BSP and sample app, for
+purposes of regression testing framework enhancements and bug fixes.
+
+<p><li><b>Other testing</b>
+
+<p>While a fair bit of testing has been done, the code has not been
+subjected to a rigorous workout.  More thorough testing of all aspects
+of MDS, the framework, included BSPs, and install apps needs to be done.
+In the (unlikely!) event of bugs, these need to be fixed, and the fixes
+fed back into the central source repository.
+
+<p><li><b>CSSM types and error codes</b>
+
+<p>We have replaced the original CSSM (CDSA) data types and error codes in
+many places, but not everywhere.  We are still using the CDSA port
+library, and much of MDS is unmodified, so the CSSM types and error
+codes are still required in these places.  Instances of the old names
+should be reviewed to determine whether the CSSM or BioAPI names are
+most appropriate.
+
+<p><li><b>Pruning</b>
+
+<p>While many CDSA files have been identified as unnecessary for the BioAPI
+reference implementation, it is almost certain that there are some
+included here that are not needed.  These should be identified and
+removed from the distribution.
+
+<p><li><b>Installation</b>
+
+<p>The uninstallation currently does not remove bioapi100.dll and
+bioapi_mds300.dll from the system (system32 for NT) directory.  Nor does
+it clean up the MDS data store.
+
+</ol>
+
+<p><center><a href="12_Use.htm">&lt; Prev</a>&nbsp;&nbsp;<a href="30_History.htm">Next &gt;</a></center>
+
+</body>
+</html>

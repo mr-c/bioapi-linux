@@ -1,0 +1,70 @@
+bioapi (1.2.2) unstable; urgency=low
+
+  * Fixed logic in install-exec-hook to install when not building a deb and
+    skip the qtpwbsp if appropriate.
+
+ -- Michael R. Crusoe <michael@qrivy.net>  Sun, 19 Jun 2005 21:27:09 -0700
+
+bioapi (1.2.1) unstable; urgency=low
+
+  * Switch to new autoconf/automake/libtool based source
+  * New source fixes issues with Qt-based compilation
+  * Now build-deps on libqt3-mt-dev
+  * Remove extraneous README.Debian
+  * Switched to native package
+
+ -- Michael R. Crusoe <michael@qrivy.net>  Mon, 13 Jun 2005 18:25:08 -0700
+
+bioapi (1.2-9) unstable; urgency=low
+
+  * Rebuild with GCC 3.3.5
+  * Cleaned up description
+  * Changed package name to bioapi
+  * Added symlinks for the rest of the includes/ to /usr/include
+
+ -- Michael R. Crusoe <michael@qrivy.net>  Tue, 26 Apr 2005 20:35:40 -0700
+
+bioapi1.0 (1.2-8) unstable; urgency=low
+
+  * Fixed type in postrm, moved routines to prerm
+
+ -- Michael R. Crusoe <michael@qrivy.net>  Tue, 26 Apr 2005 14:34:23 -0700
+
+bioapi1.0 (1.2-7) unstable; urgency=low
+
+  * Made lib paths in install.sh relative to /
+
+ -- Michael R. Crusoe <michael@qrivy.net>  Tue, 26 Apr 2005 12:48:06 -0700
+
+bioapi1.0 (1.2-6) unstable; urgency=low
+
+  * Added symlinks to /usr/lib and /usr/include
+  * Fixed typo in upstream's install.sh "BIOPAI" -> "BIOAPI"
+  * Thanks to besnard@tekkno.net for pointing this out
+
+ -- Michael R. Crusoe <michael@qrivy.net>  Tue, 26 Apr 2005 11:29:51 -0700
+
+bioapi1.0 (1.2-4) unstable; urgency=low
+
+  * The *right* paths
+
+ -- Michael R. Crusoe <michael@qrivy.net>  Sat, 16 Apr 2005 04:17:16 -0700
+
+bioapi1.0 (1.2-3) unstable; urgency=low
+
+  * Really fix paths.
+
+ -- Michael R. Crusoe <michael@qrivy.net>  Sat, 16 Apr 2005 04:13:07 -0700
+
+bioapi1.0 (1.2-2) unstable; urgency=low
+
+  * Fixed paths in bioapit/install.sh and unistall.sh
+
+ -- Michael R. Crusoe <michael@qrivy.net>  Sat, 16 Apr 2005 04:07:51 -0700
+
+bioapi1.0 (1.2-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Michael R. Crusoe <michael@qrivy.net>  Sat, 16 Apr 2005 03:10:30 -0700
+

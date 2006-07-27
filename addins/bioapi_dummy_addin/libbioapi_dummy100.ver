@@ -1,0 +1,13 @@
+#
+#	version script file for libbioapi_dummy100.so
+
+libbioapi_dummy100.so{
+global:
+    BioSPI_ModuleLoad;
+    BioSPI_ModuleUnload;
+    BioSPI_ModuleAttach;
+    BioSPI_ModuleDetach;
+    RegisterBioAPIModule;
+local:
+    *;
+};

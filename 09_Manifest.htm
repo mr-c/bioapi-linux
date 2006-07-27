@@ -1,0 +1,82 @@
+<html>
+<head>
+<title>BioAPI Reference Implementation: Manifest</title>
+</head>
+
+<body>
+
+<h1>BioAPI Reference Implementation: Manifest</h1>
+
+The following isn't really a true manifest of everything included in the
+package.  Rather, it is more of a roadmap picking out the main tourist
+locations.
+
+<p><a href="addins/bioapi_dummy_addin/">/addins/bioapi_dummy_addin/</a>
+<br>The BioAPI dummy addin (BSP).  This is essentially a skeleton
+implementing all BSP functions (from which real BSPs may be derived),
+and can also be used for framework testing.
+
+<p><a href="addins/dl/">/addins/dl/</a>
+<br>Data library, used by the MDS to provide a platform-independent
+information registry.
+
+<p><a href="addins/dl/mds/">/addins/dl/mds/</a>
+<br>Module Directory Schema
+
+<p><a href="addins/dl/mds/mds_install/">/addins/dl/mds/mds_install/</a>
+<br>Application to install the MDS.
+
+<p><a href="addins/maf/">/addins/maf/</a>
+<br>MAF is an acronym that Intel can't decide what for.  The parts we use
+are common to all BSPs, but generally need to be compiled individually,
+and can't go into a common library.
+
+<p><a href="addins/pwbsp/">/addins/pwbsp/</a>
+<br>An example BSP based on passwords.  This is currently included only as a
+BSP example, and as a simple "no hardware required" test for checking
+framework builds.
+
+<p><a href="apps/CMDS/">/apps/CMDS/</a>
+<br>A library used by MdsEdit.
+
+<p><a href="apps/MdsEdit/">/apps/MdsEdit/</a>
+<br>A regedit-like interface for manipulating the MDS.
+
+<p><a href="apps/mod_install/">/apps/mod_install/</a>
+<br>An application used to install all modules, including the framework and
+BSPs.  See 11_Install.txt for usage instructions.
+
+<p><a href="apps/Sample/">/apps/Sample/</a>
+<br>A sample application which demonstrates the basic operations of MDS
+query, module loading/unloading and attaching/detaching, enrollment and
+verification.  Verification demonstrates how to use the MDS to determine
+available options.
+
+<p><a href="build/">/build/</a>
+<br>Contains a workspace for performing the entire build, batch files for
+installing and uninstalling, and a repository where all binaries are
+copied after compilation.
+
+<p><a href="framework/bioapi_util/">/framework/bioapi_util/</a>
+<br>A library of functions generally useful in a number of places both
+within the BioAPI reference implementation and for all BSPs.
+
+<p><a href="framework/h_layer/">/framework/h_layer/</a>
+<br>The fundamental framework that ties applications to BSPs.
+
+<p><a href="framework/mds_util/">/framework/mds_util/</a>
+<br><a href="framework/mds_util_api/">/framework/mds_util_api/</a>
+<br>Utilities used in the framework to interface to the MDS.  Of little or
+no interest to BSP and application developers.
+
+<p><a href="imports/">/imports/</a>
+<br>Source and libraries imported directly from the Intel CDSA, generally
+dealing with MDS and porting issues.
+
+<p><a href="include/">/include/</a>
+<br>All general (not project-specific) BioAPI header files.
+
+<p><center><a href="01_Readme.htm">&lt; Prev</a>&nbsp;&nbsp;<a href="10_Build.htm">Next &gt;</a></center>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<html>
+<head>
+<title>BioAPI Reference Implementation: Installing</title>
+</head>
+
+<body>
+
+<h1>BioAPI Reference Implementation: Installing</h1>
+
+<h2>Framework and MDS Installation</h2>
+
+First of all, the BioAPI framework and MDS must be installed.  This may be
+accomplished with the installer from the web site, using
+<a href="#mds_install">mds_install</a> to install MDS and
+<a href="#mod_install">mod_install</a> to install the framework
+(bioapi100.dll).  Alternately, there is a set of
+<a href="#batchfile">batch files</a> prebuilt to handle typical installation
+tasks.
+
+<p>You can check whether the installation was successful by running the
+MDSEdit utility.  There should be exactly one H Layer record; if there are
+no records, installation was unsuccessful or incomplete.  If there are more
+than one, then somehow two different versions of the framework are installed,
+and very likely to cause conflicts.
+
+<h2>BSP Installation</h2>
+
+Next, your BSP must be installed.  The <a href="#mod_install">mod_install</a>
+utility takes care of this.  This installation procedure adds your BSP to the
+MDS so that applications can find it.  Use MDSEdit again to check that it
+worked; a record should be added to the BSP and device keys.
+
+<h2><a name="mds_install">mds_install</a></h2>
+
+The mds_install application has the following usage:
+
+<pre>Usage: mds_install [-u] -s file [-d path]
+  -u            Uninstall the module.
+  -s file       Source file to install; no extension if installing, file name
+                        only when uninstalling or refreshing
+  -d path       Destination path; required for install.
+</pre>
+
+<p>The source files must include a path to the DLL to install, if it is not
+in the current directory.  The destination of MDS must be in the search
+path, typically the system directory (e.g.  C:\Windows\System\ or
+C:\Winnt\System32\).
+
+<p>See the contents of the <a href="#batchfile">batch files</a> for examples
+of how to use this in practice.
+
+<h2><a name="mod_install">mod_install</a></h2>
+
+The mod_install application has the following usage:
+
+<pre>Usage: mod_install [-fiur] -s file [-d path]
+  -f            Unused option reserved for future use.
+  -i            Install the module.
+  -u            Uninstall the module.
+  -r            Refresh the installation information.
+                        ** Options -i, -u, and -r are mutually exclusive. **
+  -s file       Source file to install; no extension if installing, file name
+                        only when uninstalling or refreshing
+  -d path       Destination path; required for install.
+</pre>
+
+<p>The source files must include a path to the DLL to install, if it is not
+in the current directory.  The destination of the framework (bioapi100.dll)
+must be in the search path.  The destination of a BSP may be anywhere;
+MDS remembers where, and the framework uses this to locate and load the BSP
+at runtime.
+
+<p>See the contents of the <a href="#batchfile">batch files</a> for examples
+of how to use this in practice.
+
+<p>mod_install does its work partly by calling the installation function
+in your BSP.  See <a href="12_Use.htm#bsp">the BSP section of Use.htm</a>
+for more details on how to create a BSP.
+
+<h2><a name="batchfile">Installing with a Batch File</a></h2>
+
+In the build directory, there are a collection of scripts to be used to
+install and uninstall the framework, MDS and various modules.  If run with
+no parameter (e.g.  "install_nt4"), they will (un)install the release
+version.  You may also provide a parameter (e.g.  "install_nt4 debug")
+to specify another version to (un)install.  Those batch files with
+"_apps" in the name (un)install only the MDS and the framework, while
+the others install the MDS, the framework, and the two provided BSPs
+(password and dummy).
+
+<h2><a name="testing">Testing the installation</a></h2>
+
+After using MDSEdit to ensure that MDS is installed and BSP records are
+created, you can run the sample application.  This is a very simple utility
+that allows you to select which BSP to use, and enroll and verify using that
+BSP.  The password BSP handles enrollment and verification properly; the
+"dummy addin" BSP returns an error code for any function called.
+
+<p><center><a href="10_Build.htm">&lt; Prev</a>&nbsp;&nbsp;<a href="12_Use.htm">Next &gt;</a></center>
+
+</body>
+</html>

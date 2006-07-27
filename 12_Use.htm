@@ -1,0 +1,108 @@
+<html>
+<head>
+<title>BioAPI Reference Implementation: Using</title>
+</head>
+
+<body>
+
+<h1>BioAPI Reference Implementation: Using</h1>
+
+Now that you've got your framework installed, and the password BSP and
+sample app running, you will want to develop your own BSP or
+application.  The examples provided should give you a pretty good idea
+of how to proceed, but we'll point out some of the important points
+here.
+
+<h2><a name="app">Applications</a></h2>
+
+The sample app project (<a href="apps/sample/win32/">/apps/sample/win32/</a>)
+is a good place to start.  The main things that an application needs to
+do are:
+
+<ol>
+
+<li>Include the bioapi.h file.  This includes all other important header
+files required for most applications.  Every application will require
+this.
+
+<li>Include the bioapi_schema.h file.  This defines the BSP schema
+structures and the BioAPI_EnumModules function, required for querying
+the MDS.  Almost every application will require this.
+
+<li>Define a set of application memory functions, according to the
+definitions in bioapi_type.h.  These functions will be used by the BSPs
+to allocate memory from the application heap, rather than their own
+internal heaps.  Alternately, if you have no special memory
+requirements, you may be able to use the default functions defined in
+bioapi_util.h, and provided in the bioapi_util.lib static link library.
+
+<li>Implement the calls into the BioAPI framework required by your
+application.
+
+<li>It is expected that most applications will want to link with the
+bioapi100.lib stub library, which will allow applications to
+automatically link dynamically with the framework.  It is also possible
+for an application to load the framework dynamically for itself, and
+functions may some day be added to the bioapi_util static link library
+to make this easier.
+
+</ol>
+
+<h2><a name="bsp">BSPs</a></h2>
+
+A BSP has somewhat more stringent requirements than an application.  BSP
+developers should review section 4.2 of the specification for details.
+
+<p>The dummy addin project
+(<a href="addins/bioapi_dummy_addin/">/addins/bioapi_dummy_addin/</a>)
+is a good place to start.  The main things are:
+
+<ol>
+
+<li>Include the biospi.h file.  This includes all other important header
+files required for most BSPs.  Every BSP will require this.
+
+<li>Copy the maf_config.h file from the sample addin and modify to
+insert the BSP-specific options.  Among the details to be specified:
+
+<ul>
+
+<li>You will need to generate a UUID.  There are many UUID (aka GUID)
+generators available.  Microsoft Visual Studio includes the guidgen utility
+for such purposes.
+
+<li>Modify the BSP_SUPPORTED_FORMATS_INITIALIZER to list the data formats
+supported by the BSP.  See section 2.1.6 of the spec for information on
+data formats.  The dummy addin maf_config.h has an example that shows the
+format required for the initializer.
+
+<li>The optional functionality supported by the BSP must be announced with
+the BSP_FACTORS_MASK, BSP_OPERATIONS, BSP_OPTIONS, BSP_PAYLOAD_POLICY,
+BSP_MAX_PAYLOAD, BSP_MAX_DB_SIZE and BSP_MAX_IDENTIFY values.
+
+</ul>
+
+<li>Provide an installation function.  This is generally managed by simply
+copying, and possibly slightly modifying, the install.c file from the
+dummy addin.
+
+<li>Define and implement the interface to be provided by the BSP.
+bioapi_dummy_addini.c contains a skeleton implementation of all
+available SPI functions.  A particular BSP may implement as many or as
+few of these functions as desired, subject to the requirements laid out
+in section 4.2 of the specification.
+
+<li>Copy mod_manage.c from the dummy addin and make any required
+changes.
+
+<li>It is expected that most BSPs will want to link with the bioapi_util.lib
+static link library.  Among other things, the default install.c makes use
+of functions provided in this library, and will cause link errors if it is
+not included.
+
+</ol>
+
+<p><center><a href="11_Install.htm">&lt; Prev</a>&nbsp;&nbsp;<a href="20_Todo.htm">Next &gt;</a></center>
+
+</body>
+</html>

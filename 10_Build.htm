@@ -1,0 +1,30 @@
+<html>
+<head>
+<title>BioAPI Reference Implementation: Building</title>
+</head>
+
+<body>
+
+<h1>BioAPI Reference Implementation: Building</h1>
+
+The reference implementation was developed under Microsoft Visual
+Studio, and workspaces and projects are included for building all the
+various projects.
+
+<p>The easiest way to go about it is to load the /build/build.dsw
+workspace, set "build" as the active project, and build it.  This will
+ensure that all projects in the system are compiled.  All files in the
+projects use relative paths, so it is important to maintain the directory
+structure of the source.
+
+<p>There are three configurations: debug, memdebug and release.  Debug and
+release are exactly what you would expect.  Memdebug is the same as
+debug, but defines BioAPI_MEMCHECK_ON, which tells files to use enhanced
+versions of memory functions (malloc, free, realloc, calloc) which are
+intended to track memory allocations and give a report of any memory
+leaks, and where they were allocated from.
+
+<p><center><a href="09_Manifest.htm">&lt; Prev</a>&nbsp;&nbsp;<a href="11_Install.htm">Next &gt;</a></center>
+
+</body>
+</html>

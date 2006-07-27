@@ -1,0 +1,240 @@
+<!DOCTYPE UI><UI version="3.0" stdsetdef="1">
+<class>QSampleMainWnd</class>
+<widget class="QMainWindow">
+    <property name="name">
+        <cstring>mainWindow</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>435</width>
+            <height>281</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>BioAPI Sample Application</string>
+    </property>
+    <property name="icon">
+        <pixmap>icon.png</pixmap>
+    </property>
+    <widget class="QGroupBox">
+        <property name="name">
+            <cstring>GroupBox2</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>10</y>
+                <width>271</width>
+                <height>111</height>
+            </rect>
+        </property>
+        <property name="title">
+            <string>Technologies</string>
+        </property>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>TextLabel1</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>20</y>
+                    <width>130</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>Installed Biometrics</string>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>TextLabel2</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>80</y>
+                    <width>100</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>Current Handle:</string>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>m_handleLabel</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>140</x>
+                    <y>79</y>
+                    <width>80</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>0x00000000</string>
+            </property>
+        </widget>
+        <widget class="QComboBox">
+            <property name="name">
+                <cstring>m_bspCombo</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>50</y>
+                    <width>250</width>
+                    <height>20</height>
+                </rect>
+            </property>
+        </widget>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>m_okButton</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>300</x>
+                <y>20</y>
+                <width>120</width>
+                <height>22</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Ok</string>
+        </property>
+        <property name="default">
+            <bool>false</bool>
+        </property>
+    </widget>
+    <widget class="QGroupBox">
+        <property name="name">
+            <cstring>GroupBox3</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>130</y>
+                <width>271</width>
+                <height>130</height>
+            </rect>
+        </property>
+        <property name="title">
+            <string>Authentication</string>
+        </property>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>TextLabel4</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>20</y>
+                    <width>65</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>User Id</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>m_userID</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>40</y>
+                    <width>250</width>
+                    <height>22</height>
+                </rect>
+            </property>
+        </widget>
+        <widget class="QPushButton">
+            <property name="name">
+                <cstring>m_enrollButton</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>70</y>
+                    <width>250</width>
+                    <height>22</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>Enroll</string>
+            </property>
+        </widget>
+        <widget class="QPushButton">
+            <property name="name">
+                <cstring>m_verifyButton</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>100</y>
+                    <width>250</width>
+                    <height>22</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>Verify</string>
+            </property>
+        </widget>
+    </widget>
+</widget>
+<toolbars>
+</toolbars>
+<connections>
+    <connection>
+        <sender>m_okButton</sender>
+        <signal>clicked()</signal>
+        <receiver>mainWindow</receiver>
+        <slot>close()</slot>
+    </connection>
+    <connection>
+        <sender>m_enrollButton</sender>
+        <signal>clicked()</signal>
+        <receiver>mainWindow</receiver>
+        <slot>slotEnrollButtonPressed()</slot>
+    </connection>
+    <connection>
+        <sender>m_verifyButton</sender>
+        <signal>clicked()</signal>
+        <receiver>mainWindow</receiver>
+        <slot>slotVerifyButtonPressed()</slot>
+    </connection>
+    <connection>
+        <sender>m_bspCombo</sender>
+        <signal>activated(int)</signal>
+        <receiver>mainWindow</receiver>
+        <slot>slotSelectedBSPChanged(int)</slot>
+    </connection>
+</connections>
+<tabstops>
+    <tabstop>m_bspCombo</tabstop>
+    <tabstop>m_userID</tabstop>
+    <tabstop>m_enrollButton</tabstop>
+    <tabstop>m_verifyButton</tabstop>
+    <tabstop>m_okButton</tabstop>
+</tabstops>
+<includes>
+    <include location="local" impldecl="in implementation">mainwindow.ui.h</include>
+</includes>
+<slots>
+    <slot>slotVerifyButtonPressed()</slot>
+    <slot>slotEnrollButtonPressed()</slot>
+    <slot>slotSelectedBSPChanged( int )</slot>
+</slots>
+<pixmapinproject/>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

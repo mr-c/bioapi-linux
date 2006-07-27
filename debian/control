@@ -1,0 +1,19 @@
+Source: bioapi
+Section: misc
+Priority: optional
+Maintainer: Michael R. Crusoe <michael@qrivy.net>
+Build-Depends: debhelper (>= 4.0.0), autotools-dev, libqt3-mt-dev
+Standards-Version: 3.6.1
+
+Package: bioapi
+Replaces: bioapi1.0
+Conflicts: bioapi1.0
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description:  Framework for biometric-based authentication
+ The BioAPI provides a high-level generic biometric authentication model;
+ one suited for any form of biometric technology. It covers the basic functions
+ of Enrollment, Verification, and Identification, and includes a database
+ interface to allow a biometric service provider (BSP) to manage the
+ Identification population for optimum performance.
+	

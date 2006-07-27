@@ -1,0 +1,372 @@
+<!DOCTYPE UI><UI version="3.0" stdsetdef="1">
+<class>MdsEditMainWnd</class>
+<widget class="QMainWindow">
+    <property name="name">
+        <cstring>m_mainWnd</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>743</width>
+            <height>533</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>MDS Editor</string>
+    </property>
+    <property name="icon">
+        <pixmap>mdsedit.png</pixmap>
+    </property>
+    <hbox>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <property name="margin">
+            <number>1</number>
+        </property>
+        <property name="spacing">
+            <number>1</number>
+        </property>
+        <widget class="QSplitter">
+            <property name="name">
+                <cstring>m_splitter</cstring>
+            </property>
+            <property name="frameShape">
+                <enum>Box</enum>
+            </property>
+            <property name="orientation">
+                <enum>Horizontal</enum>
+            </property>
+            <widget class="QListView">
+                <column>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="clickable">
+                        <bool>false</bool>
+                    </property>
+                    <property name="resizeable">
+                        <bool>false</bool>
+                    </property>
+                </column>
+            <item>
+                <property name="text">
+                    <string></string>
+                </property>
+                <property name="pixmap">
+                    <pixmap>root.png</pixmap>
+                </property>
+            </item>
+                <property name="name">
+                    <cstring>m_treeView</cstring>
+                </property>
+                <property name="frameShape">
+                    <enum>Panel</enum>
+                </property>
+                <property name="frameShadow">
+                    <enum>Sunken</enum>
+                </property>
+                <property name="resizePolicy">
+                    <enum>AutoOneFit</enum>
+                </property>
+                <property name="rootIsDecorated">
+                    <bool>true</bool>
+                </property>
+                <property name="resizeMode">
+                    <enum>AllColumns</enum>
+                </property>
+            </widget>
+            <widget class="QListView">
+                <column>
+                    <property name="text">
+                        <string>Attribute Name</string>
+                    </property>
+                    <property name="clickable">
+                        <bool>true</bool>
+                    </property>
+                    <property name="resizeable">
+                        <bool>true</bool>
+                    </property>
+                </column>
+                <column>
+                    <property name="text">
+                        <string>Data</string>
+                    </property>
+                    <property name="clickable">
+                        <bool>true</bool>
+                    </property>
+                    <property name="resizeable">
+                        <bool>true</bool>
+                    </property>
+                </column>
+                <column>
+                    <property name="text">
+                        <string>Length</string>
+                    </property>
+                    <property name="clickable">
+                        <bool>true</bool>
+                    </property>
+                    <property name="resizeable">
+                        <bool>true</bool>
+                    </property>
+                </column>
+                <property name="name">
+                    <cstring>m_listView</cstring>
+                </property>
+                <property name="resizePolicy">
+                    <enum>AutoOneFit</enum>
+                </property>
+                <property name="allColumnsShowFocus">
+                    <bool>true</bool>
+                </property>
+                <property name="resizeMode">
+                    <enum>AllColumns</enum>
+                </property>
+            </widget>
+        </widget>
+    </hbox>
+</widget>
+<menubar>
+    <property name="name">
+        <cstring>menubar</cstring>
+    </property>
+    <item text="&amp;MDS" name="mdsMenu">
+        <action name="importMDSFileAction"/>
+        <action name="exportMDSFileAction"/>
+        <separator/>
+        <action name="mdsExitAction"/>
+    </item>
+    <item text="&amp;Edit" name="editMenu">
+        <action name="importBlobAction"/>
+        <action name="exportBlobAction"/>
+        <separator/>
+        <action name="modifyAttributeAction"/>
+        <action name="newRecordAction"/>
+        <action name="deleteAction"/>
+        <separator/>
+        <action name="findAction"/>
+        <action name="findNextAction"/>
+    </item>
+    <item text="&amp;Help" name="helpMenu">
+        <action name="helpAboutAction"/>
+    </item>
+</menubar>
+<toolbars>
+</toolbars>
+<actions>
+    <action>
+        <property name="name">
+            <cstring>mdsExitAction</cstring>
+        </property>
+        <property name="text">
+            <string>Exit</string>
+        </property>
+        <property name="menuText">
+            <string>E&amp;xit</string>
+        </property>
+        <property name="accel">
+            <number>0</number>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>findAction</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>searchfind</iconset>
+        </property>
+        <property name="text">
+            <string>Find</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Find...</string>
+        </property>
+        <property name="accel">
+            <number>4194374</number>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>helpAboutAction</cstring>
+        </property>
+        <property name="text">
+            <string>About</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;About...</string>
+        </property>
+        <property name="accel">
+            <number>0</number>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>importMDSFileAction</cstring>
+        </property>
+        <property name="enabled">
+            <bool>false</bool>
+        </property>
+        <property name="text">
+            <string>&amp;Import MDS File...</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>exportMDSFileAction</cstring>
+        </property>
+        <property name="enabled">
+            <bool>false</bool>
+        </property>
+        <property name="text">
+            <string>&amp;Export MDS File...</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>importBlobAction</cstring>
+        </property>
+        <property name="enabled">
+            <bool>false</bool>
+        </property>
+        <property name="text">
+            <string>&amp;Import Blob Attribute...</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>exportBlobAction</cstring>
+        </property>
+        <property name="enabled">
+            <bool>false</bool>
+        </property>
+        <property name="text">
+            <string>&amp;Export Blob Attribute...</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>modifyAttributeAction</cstring>
+        </property>
+        <property name="enabled">
+            <bool>false</bool>
+        </property>
+        <property name="text">
+            <string>&amp;Modify Attribute...</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>newRecordAction</cstring>
+        </property>
+        <property name="enabled">
+            <bool>false</bool>
+        </property>
+        <property name="text">
+            <string>&amp;New Record</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>deleteAction</cstring>
+        </property>
+        <property name="enabled">
+            <bool>false</bool>
+        </property>
+        <property name="text">
+            <string>Delete</string>
+        </property>
+        <property name="accel">
+            <number>0</number>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>findNextAction</cstring>
+        </property>
+        <property name="enabled">
+            <bool>true</bool>
+        </property>
+        <property name="text">
+            <string>Find Next</string>
+        </property>
+        <property name="accel">
+            <number>4146</number>
+        </property>
+    </action>
+</actions>
+<connections>
+    <connection>
+        <sender>helpAboutAction</sender>
+        <signal>activated()</signal>
+        <receiver>m_mainWnd</receiver>
+        <slot>helpAbout()</slot>
+    </connection>
+    <connection>
+        <sender>mdsExitAction</sender>
+        <signal>activated()</signal>
+        <receiver>m_mainWnd</receiver>
+        <slot>close()</slot>
+    </connection>
+    <connection>
+        <sender>m_treeView</sender>
+        <signal>selectionChanged(QListViewItem*)</signal>
+        <receiver>m_mainWnd</receiver>
+        <slot>slotSelectionChanged(QListViewItem*)</slot>
+    </connection>
+    <connection>
+        <sender>modifyAttributeAction</sender>
+        <signal>activated()</signal>
+        <receiver>m_mainWnd</receiver>
+        <slot>slotModifyAttributeAction()</slot>
+    </connection>
+    <connection>
+        <sender>m_listView</sender>
+        <signal>doubleClicked(QListViewItem*)</signal>
+        <receiver>m_mainWnd</receiver>
+        <slot>slotAttributeDoubleClicked(QListViewItem*)</slot>
+    </connection>
+    <connection>
+        <sender>m_listView</sender>
+        <signal>selectionChanged(QListViewItem*)</signal>
+        <receiver>m_mainWnd</receiver>
+        <slot>slotAttrSelectionChanged(QListViewItem*)</slot>
+    </connection>
+    <connection>
+        <sender>newRecordAction</sender>
+        <signal>activated()</signal>
+        <receiver>m_mainWnd</receiver>
+        <slot>slotNewRecordAction()</slot>
+    </connection>
+    <connection>
+        <sender>findAction</sender>
+        <signal>activated()</signal>
+        <receiver>m_mainWnd</receiver>
+        <slot>slotFindAction()</slot>
+    </connection>
+    <connection>
+        <sender>findNextAction</sender>
+        <signal>activated()</signal>
+        <receiver>m_mainWnd</receiver>
+        <slot>slotFindNextAction()</slot>
+    </connection>
+</connections>
+<includes>
+    <include location="local" impldecl="in implementation">MdsEditMainWnd.ui.h</include>
+</includes>
+<variables>
+    <variable></variable>
+</variables>
+<slots>
+    <slot>helpAbout()</slot>
+    <slot>slotAttributeDoubleClicked(QListViewItem *)</slot>
+    <slot>slotAttrSelectionChanged(QListViewItem *)</slot>
+    <slot>slotFindAction()</slot>
+    <slot>slotFindNextAction()</slot>
+    <slot>slotModifyAttributeAction()</slot>
+    <slot>slotNewRecordAction()</slot>
+    <slot>slotSelectionChanged(QListViewItem *)</slot>
+</slots>
+<pixmapinproject/>
+<layoutdefaults spacing="1" margin="1"/>
+</UI>
