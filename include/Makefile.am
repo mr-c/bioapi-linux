@@ -8,11 +8,11 @@ include_HEADERS =	bioapi.h \
 			bsp_schema.h \
 			bioapi_spi.h \
 			bioapi_uuid.h \
-			biospi_type.h
+			biospi_type.h \
+			bioapi_util.h \
+			bioapi_installdefs.h
 			
-noinst_HEADERS = 	bioapi_util.h \
-			installdefs.h \
-			device_schema.h \
+noinst_HEADERS = 	device_schema.h \
 			mds.h \
 			port/bioapi_lock.h \
 			port/bioapi_port.h

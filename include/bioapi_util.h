@@ -12,7 +12,7 @@ extern "C"
 #endif
 
 #include "bioapi_type.h"
-#include "installdefs.h"
+#include "bioapi_installdefs.h"
 
 /*
  * Format conversion utilities

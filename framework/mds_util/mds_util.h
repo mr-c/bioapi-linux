@@ -329,7 +329,7 @@ typedef struct _mdsu_cdsa_dl_enc_product
 	CSSM_STRING ProductVendor;
 	CSSM_VERSION ProductVersion;
 	uint32 ProductFlags;
-	//uint32 CustomFlags;
+	/* uint32 CustomFlags; */
 	CSSM_STRING StandardDesc;
 	CSSM_VERSION StandardVersion;
 	CSSM_NET_PROTOCOL Protocol;
@@ -366,8 +366,8 @@ typedef struct _mdsu_cdsa_cl_primary
 	CSSM_DATA CertFieldNames;
 	CSSM_CERT_BUNDLE_TYPE BundleTypeFormat[MDSU_MAX_VALUE_COUNT];
 	uint32 NumBundleTypeFormat;
-	//XlationTypeFormat is a leftover, hence its type is missing from cssmtype.h
-	//Since we know it's a multi-uint32, let's call it a uint32.
+	/* XlationTypeFormat is a leftover, hence its type is missing from cssmtype.h
+	   Since we know it's a multi-uint32, let's call it a uint32. */
 	uint32 XlationTypeFormat[MDSU_MAX_VALUE_COUNT];
 	uint32 NumXlationTypeFormat;
 	CSSM_CL_TEMPLATE_TYPE DefaultTemplateType;
@@ -573,9 +573,9 @@ IfMdsuSchemaManipulator;
 
 /* Schema manipulator interfaces. */
 
-//extern const IfMdsuSchemaManipulator IfiMdsuBioAPICapabilitySchema;
-//extern const IfMdsuSchemaManipulator IfiMdsuBioAPIBspCapabilitySchema;
-//extern const IfMdsuSchemaManipulator IfiMdsuBioAPIBspDeviceSchema;
+/* extern const IfMdsuSchemaManipulator IfiMdsuBioAPICapabilitySchema;
+extern const IfMdsuSchemaManipulator IfiMdsuBioAPIBspCapabilitySchema;
+extern const IfMdsuSchemaManipulator IfiMdsuBioAPIBspDeviceSchema; */
 
 
 /* MDS Manipulation Context */

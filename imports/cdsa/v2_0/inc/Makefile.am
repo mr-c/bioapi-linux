@@ -1,6 +1,7 @@
+include_HEADERS = 	cssmtype.h
+
 noinst_HEADERS =	cssmerr.h \
 			cssmMemTrack.h \
-			cssmtype.h \
 			mds_schema.h \
 			trc_util.h \
 			intel/ff_passthrough.h \

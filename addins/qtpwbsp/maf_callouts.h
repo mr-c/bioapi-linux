@@ -20,7 +20,7 @@ extern "C" {
 #error $/inc/cssmtype.h must be included before this file
 #endif
 
-// Required type defined in integrity header of CDSA.
+/* Required type defined in integrity header of CDSA. */
 typedef const void* ADDIN_MODULE_HANDLE;
 
 /*-----------------------------------------------------------------------------

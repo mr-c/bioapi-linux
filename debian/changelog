@@ -1,6 +1,7 @@
 bioapi (1.2.3) feisty; urgency=low
 
   * patched for gcc 4
+  * Ship bioapi_util.h & cssmtype.h, rename (to bioapi_*) and ship installdefs.h
 
  -- michael <michael@qrivy.net>  Fri, 13 Jul 2007 23:47:22 -0700
 

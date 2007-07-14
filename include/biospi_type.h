@@ -100,4 +100,4 @@ typedef struct bioapi_upcalls
 } BioAPI_UPCALLS, *BioAPI_UPCALLS_PTR;
 
 
-#endif // _BIOSPITYPE_H
+#endif /* _BIOSPITYPE_H */

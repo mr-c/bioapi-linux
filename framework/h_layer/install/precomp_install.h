@@ -28,8 +28,6 @@
 #include "bioapi_util.h"
 #include "mds_util.h"
 
-#include "installdefs.h"
-
 /* MAF includes */
 #include "maf_config.h"
 
