@@ -455,7 +455,8 @@ public:
 		DAL_DATABASE_INFO_REF_PTR &prefDatabase,
         PORT_MUTEX_HANDLE &Mutex);
 
-	CSSM_RETURN DAL_DATABASE_INFO_LIST::GetDBNamesAndParameters(
+// was  CSSM_RETURN DAL_DATABASE_INFO_LIST::GetDBNamesAndParameters(
+	CSSM_RETURN GetDBNamesAndParameters(
 				CSSM_DL_DB_HANDLE DLDBHandle,
 				DAL_DB_OPEN_PARAM_PTR pParam);
 };

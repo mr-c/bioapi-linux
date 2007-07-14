@@ -16,7 +16,7 @@ private:
 public:
 
   QString m_strDirName;
-  QMDS *m_pMds;
+  class QMDS *m_pMds;
   MDS_DB_HANDLE m_hDb;
   
   CSSM_RETURN Open( QMDS *pMds, const char *szDirName );

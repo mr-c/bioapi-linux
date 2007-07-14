@@ -1,4 +1,10 @@
-bioapi (1.2.2) unstable; urgency=low
+bioapi (1.2.3) feisty; urgency=low
+
+  * patched for gcc 4
+
+ -- michael <michael@qrivy.net>  Fri, 13 Jul 2007 23:47:22 -0700
+
+bioapi (1.2.2) feisty; urgency=low
 
   * Fixed logic in install-exec-hook to install when not building a deb and
     skip the qtpwbsp if appropriate.

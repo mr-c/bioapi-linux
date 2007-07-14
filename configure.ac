@@ -1,4 +1,4 @@
-AC_INIT([[BioAPI 1.10 Framework Reference Implementation]],[[1.2.2]],[[michael@qrivy.net]],[[bioapi]])
+AC_INIT([[BioAPI 1.10 Framework Reference Implementation]],[[1.2.3]],[[michael@qrivy.net]],[[bioapi]])
 AC_PREREQ(2.59)
 AC_CONFIG_SRCDIR(framework/h_layer/bioapi_api.c)
 AM_INIT_AUTOMAKE([foreign dist-bzip2 no-installinfo no-installman])

@@ -10,7 +10,7 @@ static char THIS_FILE[] = __FILE__;
 #endif
 //////////////////////////////////////////////////////////////////////
 
-void QCdsaRecType< CCssmRecInfoType >::SpecifyAttributes()
+template <> void QCdsaRecType< CCssmRecInfoType >::SpecifyAttributes()
 {
   m_outputAttributeData[CCssmRecInfoType::IDX_MODULEID].Info     = s_BioApiAttrInfo_ModuleId;
   m_outputAttributeData[CCssmRecInfoType::IDX_MODULENAME].Info	 = s_BioApiAttrInfo_ModuleName;
@@ -20,7 +20,7 @@ void QCdsaRecType< CCssmRecInfoType >::SpecifyAttributes()
   m_outputAttributeData[CCssmRecInfoType::IDX_DESC].Info         = s_BioApiAttrInfo_Description;
 }
 
-void QCdsaRecType< CEmmRecInfoType >::SpecifyAttributes()
+template <> void QCdsaRecType< CEmmRecInfoType >::SpecifyAttributes()
 {
   m_outputAttributeData[CEmmRecInfoType::IDX_MODULEID].Info	= s_BioApiAttrInfo_ModuleId;
   m_outputAttributeData[CEmmRecInfoType::IDX_DEVICEID].Info	= s_BioApiAttrInfo_DeviceId;
@@ -47,7 +47,7 @@ void QCdsaRecType< CEmmRecInfoType >::SpecifyAttributes()
 
 
 
-void QCdsaRecType< CBioAPI_DeviceInfoType >::SpecifyAttributes()
+template <> void QCdsaRecType< CBioAPI_DeviceInfoType >::SpecifyAttributes()
 {
   m_outputAttributeData[CBioAPI_DeviceInfoType::IDX_MODULE_ID].Info		= s_BioApiAttrInfo_ModuleId;
   m_outputAttributeData[CBioAPI_DeviceInfoType::IDX_DEVICE_ID].Info		= s_BioApiAttrInfo_DeviceId;
