@@ -1,5 +1,6 @@
 AC_INIT([[BioAPI 1.10 Framework Reference Implementation]],[[1.2.3]],[[michael@qrivy.net]],[[bioapi]])
-AC_PREREQ(2.59)
+AC_PREREQ([2.67])
+AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_SRCDIR(framework/h_layer/bioapi_api.c)
 AM_INIT_AUTOMAKE([foreign dist-bzip2 no-installinfo no-installman])
 AC_SUBST(VERSION)
@@ -11,7 +12,7 @@ AC_PROG_CC
 AC_PROG_LEX
 AC_PROG_INSTALL
 AC_PROG_YACC
-AC_PROG_LIBTOOL
+LT_INIT
 
 # Checks for libraries.
 # FIXME: Replace `main' with a function in `-ldl':
@@ -51,7 +52,7 @@ AC_DEFINE(LINUX)
 AC_DEFINE(_GNU_SOURCE)
 AC_SUBST(MDS_PATH,${localstatedir}/bioapi)
 
-BNV_HAVE_QT
+AX_HAVE_QT
 
 AM_CONDITIONAL(GUI_OPT, test ${have_qt}=yes)
 

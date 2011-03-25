@@ -1,13 +1,18 @@
+bioapi (1.2.4) maverick; urgency=low
+
+  * Switch to Ubuntu for development
+  * Update autoconf
+  * Switch to dpkg-source 3.0 (native) format
+  * revert changelog munge
+
+ -- Michael R. Crusoe <michael.crusoe@gmail.com>  Fri, 25 Mar 2011 09:45:28 -0700
+
 bioapi (1.2.3) feisty; urgency=low
 
-  [ michael ]
   * patched for gcc 4
   * Ship bioapi_util.h & cssmtype.h, rename (to bioapi_*) and ship installdefs.h
 
-  [ Michael ]
-  * Switch to dpkg-source 3.0 (quilt) format
-
- -- Michael <michael@flurry>  Fri, 25 Mar 2011 02:24:44 -0700
+ -- michael <michael.crusoe@qrivy.net>  Fri, 13 Jul 2007 23:47:22 -0700
 
 bioapi (1.2.2) feisty; urgency=low
 
