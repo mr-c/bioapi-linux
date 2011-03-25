@@ -234,6 +234,7 @@ int Enroll() {
     }
     
     OutputToFile(userName, EnrolledTemplate);
+    return 0;
   }
 }
 
