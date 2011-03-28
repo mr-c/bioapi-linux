@@ -28,7 +28,7 @@ CSSM_RETURN CSSMAPI MDSUTIL_InitEx(CSSM_BOOL ReadWrite)
  	/* Linux-Port: added "const" keyword for Linux version */
 #if defined (UNIX)
  	const BioAPI_UUID MDSUTIL_Uuid = ref_h_layer_uuid_init;
-#elif
+#else
 	BioAPI_UUID MDSUTIL_Uuid = ref_h_layer_uuid_init;
 #endif
 
