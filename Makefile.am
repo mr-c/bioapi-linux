@@ -37,7 +37,7 @@ EXTRA_DIST =	00_License.htm \
 		32_Contacts.htm \
 		Disclaimer \
 		debian \
-		m4/bnv_have_qt.m4
+		m4/ax_have_qt.m4
 
 install-exec-hook:
 	if test ! ${SKIPCONFIG}; \

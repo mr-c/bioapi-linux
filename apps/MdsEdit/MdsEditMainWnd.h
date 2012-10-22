@@ -1,8 +1,7 @@
 /****************************************************************************
 ** Form interface generated from reading ui file 'MdsEditMainWnd.ui'
 **
-** Created: Mon Jun 13 00:44:58 2005
-**      by: The User Interface Compiler ($Id: qt/main.cpp   3.3.4   edited Nov 24 2003 $)
+** Created: Sun Oct 21 22:51:44 2012
 **
 ** WARNING! All changes made in this file will be lost!
 ****************************************************************************/

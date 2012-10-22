@@ -1,4 +1,4 @@
-AC_INIT([[BioAPI 1.10 Framework Reference Implementation]],[[1.2.3]],[[michael@qrivy.net]],[[bioapi]])
+AC_INIT([[BioAPI 1.10 Framework Reference Implementation]],[[1.2.4]],[[michael.crusoe@gmail.com]],[[bioapi]])
 AC_PREREQ([2.67])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_SRCDIR(framework/h_layer/bioapi_api.c)
