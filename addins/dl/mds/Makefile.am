@@ -62,7 +62,7 @@ libbioapi_mds300_la_LIBADD =	../../../framework/port/libport.la \
 
 libbioapi_mds300_la_LDFLAGS = -Wl,--version-script=${srcdir}/libbioapi_mds300.ver
 
-CPPFLAGS =	-I${top_srcdir}/include/ \
+AM_CPPFLAGS =	-I${top_srcdir}/include/ \
 		-I${top_srcdir}/imports/cdsa/v2_0/inc/ \
 		-DSTRONG_TYPES \
 		-DMODULE_DIRECTORY_SERVICES

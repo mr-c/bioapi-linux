@@ -20,7 +20,7 @@ libCMDS_la_SOURCES =	CdsaRec.cpp \
 libCMDS_la_LIBADD =	${QT_LIBS} \
 			../../addins/dl/mds/libbioapi_mds300.la
 
-CPPFLAGS =      -I${top_srcdir}/include \
+AM_CPPFLAGS =      -I${top_srcdir}/include \
                 -I${top_srcdir}/imports/cdsa/v2_0/inc \
                 ${QT_CXXFLAGS}
 

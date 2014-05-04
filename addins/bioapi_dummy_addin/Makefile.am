@@ -25,5 +25,5 @@ libbioapi_dummy100_la_LIBADD = 	../../framework/port/libport.la \
 libbioapi_dummy100_la_LDFLAGS =	-Wl,--version-script=${srcdir}/libbioapi_dummy100.ver \
 				-XCClinker -nostartfiles
 
-CPPFLAGS =	-I${top_srcdir}/include/ \
+AM_CPPFLAGS =	-I${top_srcdir}/include/ \
 		-I${top_srcdir}/imports/cdsa/v2_0/inc/

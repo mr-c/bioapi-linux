@@ -15,5 +15,5 @@ libbioapi100_la_LIBADD =	../mds_util/libmds_util.la \
 				../bioapi_util/libbioapi_util.la \
 				../port/libport.la
 
-CPPFLAGS =	-I${top_srcdir}/include \
+AM_CPPFLAGS =	-I${top_srcdir}/include \
 		-I${top_srcdir}/imports/cdsa/v2_0/inc/ 

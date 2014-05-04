@@ -39,7 +39,7 @@ MdsEdit_LDADD =	${QT_LIBS} \
 		../../framework/mds_util_api/libmds_util_api.la
 		../../addins/dl/mds/libbioapi_mds300.la
 
-CPPFLAGS =      -I${top_srcdir}/include \
+AM_CPPFLAGS =      -I${top_srcdir}/include \
                 -I${top_srcdir}/imports/cdsa/v2_0/inc \
                 ${QT_CXXFLAGS} \
 		-I${top_srcdir}/apps/Cmds

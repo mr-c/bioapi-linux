@@ -17,7 +17,7 @@ EXTRA_DIST = 	mainwindow.ui \
 QSample_LDADD =	${QT_LIBS} \
 		../../framework/h_layer/libbioapi100.la
 
-CPPFLAGS =      -I${top_srcdir}/include \
+AM_CPPFLAGS =      -I${top_srcdir}/include \
                 -I${top_srcdir}/imports/cdsa/v2_0/inc \
                 ${QT_CXXFLAGS}
 

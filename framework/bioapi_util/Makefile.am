@@ -8,7 +8,7 @@ libbioapi_util_la_SOURCES =	bsp_install.c \
 
 libbioapi_util_la_LIBADD = ../mds_util/libmds_util.la
 
-CPPFLAGS =	-I${top_srcdir}/include \
+AM_CPPFLAGS =	-I${top_srcdir}/include \
 		-I${top_srcdir}/imports/cdsa/v2_0/inc/ \
 		-I${top_srcdir}/framework/mds_util/
 
