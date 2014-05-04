@@ -21,7 +21,7 @@ libpwbsp_la_LIBADD =	../../framework/port/libport.la \
 			../../framework/mds_util/libmds_util.la \
 			../../framework/mds_util_api/libmds_util_api.la
 
-LDFLAGS =	-Wl,--version-script=${srcdir}/libpwbsp.ver
+AM_LDFLAGS =	-Wl,--version-script=${srcdir}/libpwbsp.ver
 
-CPPFLAGS =	-I${top_srcdir}/include/ \
+AM_CPPFLAGS =	-I${top_srcdir}/include/ \
 		-I${top_srcdir}/imports/cdsa/v2_0/inc/

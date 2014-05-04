@@ -6,5 +6,5 @@ libmds_util_api_la_SOURCES =	mds_app_util.c \
 				mds_app_util.h \
 				mds_util_intrn.h
 
-CPPFLAGS =	-I${top_srcdir}/include \
+AM_CPPFLAGS =	-I${top_srcdir}/include \
 		-I${top_srcdir}/imports/cdsa/v2_0/inc/

@@ -15,7 +15,7 @@ libport_la_SOURCES = 	filelock.c \
 			internal.h \
 			port_codefile.h
 
-CPPFLAGS =	-I${top_srcdir}/imports/cdsa/v2_0/inc/ \
+AM_CPPFLAGS =	-I${top_srcdir}/imports/cdsa/v2_0/inc/ \
 		-I${top_srcdir}/imports/cdsa/v2_0/inc/port/ \
 		-I${top_srcdir}/imports/cdsa/v2_0/inc/intel/ \
 		-DELF_FORMAT \
